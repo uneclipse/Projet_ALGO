@@ -1,4 +1,4 @@
-#CONSIGNES
+#CONSIGNES (code actualisé l65)
 
 #Definir la fonction avec les 3 paramètres
 #Definir l'espace -> 100*100
@@ -7,7 +7,7 @@
     #la longueur/taille du vecteur est déninie dans les paramètres (%population)
 #Coder la position aléatoire
 
-#PREMIER ESSAIE
+#PREMIER ESSAIE (FAUX)
 
 import numpy as np
 import random as rd
@@ -50,65 +50,16 @@ def fonction(a,b,c):
     return()
        
 fonction(0.5,0.5,0.7)
-    
-
-import numpy as np
-import random as rd
-import matplotlib.pyplot as plt
 
 
-##################################################################################
-
-
-def fonction(a,b,c):
-#a=%pop1
-#b=%voisinage
-#c=pause
-    a=0.5
-    d=1-a
-#d=%pop2
-    e=a*40 #pourcentage population 1
-    f=d*40
-    e=int(e)
-    print(e)
-    f=int(f)
-    
-
-import numpy as np 
-import random as rd
-j=[] 
-j=np.zeros((100,100)) 
-
-
-import numpy as np 
-import random as rd
-
-for i in range (0,100):
-    j=j+[rd.randint(1,2)]
-    j=np.zeros((100,100)) 
-    
-   
-
-   
-#permet de générer une matrice de 0,1 et 2 aléatoirement  
-import numpy as np
-A = np.random.randint(3, size=(100,100))#pas bon trop compliqué
-
-A = np(3, size=(100,100))
-
-   
-   
-np.argwhere(matrice==0)
-
-   
-   
+########################################
    identifier la case vide, la remplir
    
    import numpy as np
 x = np.arange(6)
 x
 np.argwhere(x>1)
-   
+########################################   
    
    
 ######### 1 MARS ##########
