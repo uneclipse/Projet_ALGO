@@ -1,0 +1,159 @@
+#CONSIGNES
+
+#Definir la fonction avec les 3 paramètres
+#Definir l'espace -> 100*100
+#Ajouter les populations 4000, %P1, 1-%P1=%P2
+#Créer 4 vecteurs de 2 populations dnas le graph avec des points aléatoire
+    #la longueur/taille du vecteur est déninie dans les paramètres (%population)
+#Coder la position aléatoire
+
+#PREMIER ESSAIE
+
+import numpy as np
+import random as rd
+import matplotlib.pyplot as plt
+
+
+def fonction(a,b,c):
+#a=%pop1
+#b=%voisinage
+#c=pause
+    d=1-A
+#d=%pop2
+    e=A*4000
+    f=d*4000
+    e=int(e)
+    print(e)
+    f=int(f)
+    for i in range(e) :
+        xpop1=[]
+        for i in range(e):
+            xpop1=xpop1+[rd.randint(1,100)]
+    print(xpop1)        
+    for i in range(e) :
+        ypop1=[]
+        for i in range(e):
+            ypop1=ypop1+[rd.randint(1,100)]
+    print(ypop1) 
+    for i in range(f) :
+        xpop2=[]
+        for i in range(f):
+            xpop2=xpop2+[rd.randint(1,100)]
+    print(xpop2)
+    for i in range(f) :
+        ypop2=[]
+        for i in range(f):
+            ypop2=ypop2+[rd.randint(1,100)]
+    print(ypop2)      
+    plt.plot(xpop1,ypop1,color="green",linestyle="none",marker=".")
+    plt.plot(xpop2,ypop2,color="red",linestyle="none",marker=".")
+    return()
+       
+fonction(0.5,0.5,0.7)
+    
+
+import numpy as np
+import random as rd
+import matplotlib.pyplot as plt
+
+
+##################################################################################
+
+
+def fonction(a,b,c):
+#a=%pop1
+#b=%voisinage
+#c=pause
+    a=0.5
+    d=1-a
+#d=%pop2
+    e=a*40 #pourcentage population 1
+    f=d*40
+    e=int(e)
+    print(e)
+    f=int(f)
+    
+
+import numpy as np 
+import random as rd
+j=[] 
+j=np.zeros((100,100)) 
+
+
+import numpy as np 
+import random as rd
+
+for i in range (0,100):
+    j=j+[rd.randint(1,2)]
+    j=np.zeros((100,100)) 
+    
+   
+
+   
+#permet de générer une matrice de 0,1 et 2 aléatoirement  
+import numpy as np
+A = np.random.randint(3, size=(100,100))#pas bon trop compliqué
+
+A = np(3, size=(100,100))
+
+   
+   
+np.argwhere(matrice==0)
+
+   
+   
+   identifier la case vide, la remplir
+   
+   import numpy as np
+x = np.arange(6)
+x
+np.argwhere(x>1)
+   
+   
+   
+######### 1 MARS ##########
+   
+import random as rd
+import numpy as np
+import matplotlib.pyplot as plt
+
+#CR
+def fonction(a,b,c):
+#a=%pop1
+#b=%voisinage
+#c=pause
+    d=1-a
+#d=%pop2
+    e=a*4000
+    f=d*4000
+    f=int(f)
+    e=int(e)
+    g=list(range(1,2))*e
+    print(g)
+    matrice=np.zeros((100,100))
+    matrice1=np.zeros((100,100))
+    for i in matrice1:
+        x=rd.randint(0,100)
+        y=rd.randint(0,100)
+        i=[x,y]
+        print(i)
+        matrice1[x,y]=1
+    matrice2=np.zeros((100,100))
+    for j in matrice2:
+        x1=rd.randint(0,100)
+        y1=rd.randint(0,100)
+        J=[x1,y1]
+        print(J)
+        matrice2[x1,y1]=2
+    if x!=x1 and y!=y1:
+        matrice=matrice1.__add__(matrice2)
+        
+      
+G=np.argwhere(matrice==0)
+F=np.argwhere(matrice==1)
+H=np.argwhere(matrice==2)
+#identifier la case vide et la remplir avec 1, remplir la matricce au fur et à mesure avec une bouble
+
+
+
+
