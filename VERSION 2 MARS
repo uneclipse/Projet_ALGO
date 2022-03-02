@@ -1,0 +1,72 @@
+
+
+import random as rd
+import numpy as np
+import matplotlib.pyplot as plt
+
+#CR
+def fonction(a,b,c):
+#a=%pop1
+#b=%voisinage
+#c=pause
+    a=0.7
+    d=1-a
+#d=%pop2
+    e=a*40
+    f=d*40
+    f=int(f)
+    e=int(e)
+    matrice=np.zeros((100,100))
+    for pierre in range(e):
+        G=np.argwhere(matrice==0)
+        Z=rd.randint(0,len(G))
+        ligne=G[Z]
+        x=ligne[0]    
+        y=ligne[1]    
+        matrice[x,y]=1
+        F=np.argwhere(matrice==1)
+    for paul in range(f):
+        G=np.argwhere(matrice==0)
+        Z=rd.randint(0,len(G))
+        ligne=G[Z]
+        x1=ligne[0]    
+        y1=ligne[1]    
+        matrice[x1,y1]=2
+        H=np.argwhere(matrice==2)
+    if x==x1 and y==y1:
+#On refait un tour si la position pour les individus 1 et 2 sont égales
+        for pierre in range(e):
+            G=np.argwhere(matrice==0)
+            Z=rd.randint(0,len(G))
+            ligne=G[Z]
+            x=ligne[0]    
+            y=ligne[1]
+            I=[x,y]
+            matrice[I]=1
+            F=np.argwhere(matrice==1)
+        for paul in range(f):
+            G=np.argwhere(matrice==0)
+            Z=rd.randint(0,len(G))
+            ligne=G[Z]
+            x1=ligne[0]    
+            y1=ligne[1]
+            I1=[x1,y1]
+            matrice[I1]=2
+    Voisins=[[x+1,y],[x-1,y],[x+1,y-1],[x+1,y+1],[x-1,y+1],[x-1,y-1],[x,y-1],[x,y+1],[x+1,y],[x,y]]
+    voisinage=[]
+    vecteur = np.zeros((100,100))
+    for w in range(len(Voisins)):
+        if Voisins[w]!=0:
+            voisinage=voisinage+[Voisins[w]]
+            print(voisinage)
+    for v in range(len(voisinage)):
+        pareil=0
+        if voisinage[v]==matrice[I]:
+            pareil=pareil+1
+            ppareil=pareil/len(voisinage)*100
+            if ppareil<b:
+                z=rd.randint(0,(100*100)-1)
+                while vecteur[z]!=0:
+                    z=rd.randint(0,(100*100)-1)
+                    vecteur[z]=matrice[I]
+                    matrice[I]=0
