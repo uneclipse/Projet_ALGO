@@ -1,0 +1,104 @@
+import random as rd
+import numpy as np
+import matplotlib.pyplot as plt
+
+
+def projet(prop_pop1,pourc_voisins,pas):
+    if not type(prop_pop1) in [float,int]: #vérifie qu'il s'agit bien d'un chiffre qui est entré
+        return("La proportion doit être de type float ou int.")
+    if prop_pop1>1 or prop_pop1<0 : #vérifie que la proportion est comprise entre 0 et 1
+        return("La proportion doit être comprise entre 0 et 1")
+    if not type(pourc_voisins) in [float,int]: #vérifie qu'il s'agit bien d'un chiffre qui est entré
+        return("La proportion doit être de type float ou int.")
+    if pourc_voisins>100 or pourc_voisins<0 : #vérifie que le pourcentage est compris entre 0 et 100
+        return("Le pourcentage doit être compris entre 0 et 100%")
+    if not type(pas)== int or pas<0 : #vérifie que le pas entré est bien un entier positif
+        return("Le pas doit être un entier positif")
+    nb_pop1=4000*(prop_pop1)
+    nb_pop2=4000-nb_pop1
+    matrice=np.zeros((100,100))
+    nbpop1=0
+    nbpop2=0
+    x1=[]
+    x2=[]
+    y1=[]
+    y2=[]
+    arg=[]
+
+    while nbpop1<nb_pop1: #crée des coordonées pour chacun des individus de la population 1
+        valx1=rd.randint(0,99)
+        valy1=rd.randint(0,99)
+        arg1=str(valx1)+";"+str(valy1)
+        if not arg1 in arg: #vérifie que les coordonnées proposées ne sont pas déja prises
+            matrice[valx1,valy1]=1
+            x1=x1+[valx1]
+            y1=y1+[valy1]
+            arg=arg+[arg1]
+            nbpop1=nbpop1+1
+    while nbpop2<nb_pop2: #crée des coordonées pour chacun des individus de la population 2
+        valx2=rd.randint(0,99)
+        valy2=rd.randint(0,99)
+        arg2=str(valx2)+";"+str(valy2)
+        if not arg2 in arg: #vérifie que les coordonnées proposées ne sont pas déja prises
+            matrice[valx2,valy2]=2
+            x2=x2+[valx2]
+            y2=y2+[valy2]
+            arg=arg+[arg2]
+            nbpop2=nbpop2+1
+    compteur=1
+    while compteur>0: #fait tourner le programme jusqu'à ce que la condition sur le pourcentage de voisins soit respéctée pour tous les points
+        compteur=0
+        for n in range(pas): #affiche le plot à chaque fois que la boucle correspondant au pas est terminée
+            for i in range(100): #on se déplace selon les lignes de la matrice
+                for j in range(100):#on se déplace selon les colonnes de la matrice
+                    list_voisins=[(i-1,j-1),(i-1,j),(i-1,j+1),(i,j-1),(i,j+1),(i+1,j-1),(i+1,j),(i+1,j+1)]
+                    if matrice[i,j]==1: #isole le cas où la case est occupé par un individu de la population 1
+                        s=0
+                        for k in list_voisins: #étudie les 8 cases voisines de celle étudiée
+                            if k[0]>99 or k[0]<0: #élimine les cas où on se trouve en bordure de la matrice
+                                s=s+0
+                            elif k[1]>99 or k[1]<0: #élimine les cas où on se trouve en bordure de la matrice
+                                s=s+0
+                            else: #cas avec tous les voisins possibles restants
+                                if matrice[k]==1: #compte les cas où les voisins sont aussi de la population 1
+                                    s=s+1
+                        if s<(pourc_voisins/100*8): #déplace le point si le pourcentage de points voisins est inférieur à celui souhaité
+                            compteur=compteur+1
+                            hasard=rd.randint(1,np.shape(np.argwhere(matrice==0))[0])
+                            x=np.argwhere(matrice==0)[hasard-1,0]
+                            y=np.argwhere(matrice==0)[hasard-1,1]
+                            matrice[i,j]=0
+                            matrice[x,y]=1
+                    elif matrice[i,j]==2: #isole le cas où la case est occupé par un individu de la population 2
+                        s=0
+                        for k in list_voisins: #étudie les 8 cases voisines de celle étudiée
+                            if k[0]>99 or k[0]<0: #élimine les cas où on se trouve en bordure de la matrice
+                                s=s+0
+                            elif k[1]>99 or k[1]<0: #élimine les cas où on se trouve en bordure de la matrice
+                                s=s+0
+                            else: #cas avec tous les voisins possibles restants
+                                if matrice[k]==2: #compte les cas où les voisins sont aussi de la population 2
+                                    s=s+1
+                        if s<(pourc_voisins/100*8): #déplace le point si le pourcentage de points voisins est inférieur à celui souhaité
+                            compteur=compteur+1
+                            hasard=rd.randint(1,np.shape(np.argwhere(matrice==0))[0])
+                            x=np.argwhere(matrice==0)[hasard-1,0]
+                            y=np.argwhere(matrice==0)[hasard-1,1]
+                            matrice[i,j]=0
+                            matrice[x,y]=2
+        matrice_x1=list(np.argwhere(matrice==1)[:,0]) 
+        matrice_y1=list(np.argwhere(matrice==1)[:,1])
+        matrice_x2=list(np.argwhere(matrice==2)[:,0])
+        matrice_y2=list(np.argwhere(matrice==2)[:,1])
+        plt.plot(matrice_x1,matrice_y1,linestyle="",marker=",",markerfacecolor="red")
+        plt.plot(matrice_x2,matrice_y2,linestyle="",marker=",",markerfacecolor="blue")
+        plt.pause(0.1)
+    plt.plot(matrice_x1,matrice_y1,linestyle="",marker=",",markerfacecolor="red")
+    plt.plot(matrice_x2,matrice_y2,linestyle="",marker=",",markerfacecolor="blue")
+                
+     
+    
+
+                
+
+projet(0.5,50,5)
